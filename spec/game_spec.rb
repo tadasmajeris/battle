@@ -3,6 +3,19 @@ require 'game'
 describe Game do
   let(:player1) { double :player, name: 'Antony' }
   let(:player2) { double :player, name: 'Tadas' }
+  subject { described_class.new(player1,player2) }
+
+  describe '#player1' do
+    it 'returns the first player' do
+      expect(subject.player1).to eq player1
+    end
+  end
+
+  describe '#player2' do
+    it 'returns the second player' do
+      expect(subject.player2).to eq player2
+    end
+  end
 
   describe '#attack' do
     context 'player1 attacks player2' do
