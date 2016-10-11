@@ -16,8 +16,9 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
-  post '/attack_player_2' do
-  	session[:last_move] = $game.attack($game.player1, $game.player2)
+  post '/attack' do
+  	session[:last_move] = $game.attack_current_target
+    $game.switch
   	redirect '/play'
   end
 

@@ -1,6 +1,9 @@
 <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
+
+<%=@game.player1.name%>: <%=@game.player1.hp%>HP<br />
 <%=@game.player2.name%>: <%=@game.player2.hp%>HP
-<form action="/attack_player_2" method="post">
-	<input type="submit" value="attack_player_2">
+
+<form action="/attack" method="post">
+	<input type="submit" value="attack <%="#{@game.target_player.name}"%>">
 </form>
 <p><%= @last_move %></p>
