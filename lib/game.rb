@@ -2,6 +2,14 @@ class Game
 
   attr_reader :target_player
 
+  def self.instance
+    @instance
+  end
+
+  def self.create(player1, player2)
+    @instance = Game.new(player1, player2)
+  end
+
 	def initialize(player1,player2)
 		@players = [player1,player2]
     @target_player = player2
@@ -9,8 +17,8 @@ class Game
 
   def attack_current_target
     target_player.damage(10)
-    @target_player.dead? ? "#{@target_player.name} is dead" : 
-    "#{current_player.name} attacked #{target_player.name}!" 
+    @target_player.dead? ? "#{@target_player.name} is dead" :
+    "#{current_player.name} attacked #{target_player.name}!"
   end
 
   def player1
