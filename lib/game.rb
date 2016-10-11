@@ -9,7 +9,8 @@ class Game
 
   def attack_current_target
     target_player.damage(10)
-    "#{current_player.name} attacked #{target_player.name}!"
+    @target_player.dead? ? "#{@target_player.name} is dead" : 
+    "#{current_player.name} attacked #{target_player.name}!" 
   end
 
   def player1
@@ -21,7 +22,7 @@ class Game
   end
 
   def switch
-    @target_player = (target_player == player2) ? player1 : player2
+    @target_player = current_player
   end
 
   def current_player

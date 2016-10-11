@@ -9,4 +9,8 @@ class Player
   def damage(n)
   	@hp -= n
   end
+
+  def dead?
+  	@hp <= 0
+  end
 end

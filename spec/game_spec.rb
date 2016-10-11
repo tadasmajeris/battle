@@ -1,8 +1,8 @@
 require 'game'
 
 describe Game do
-  let(:player1) { double :player, name: 'Antony' }
-  let(:player2) { double :player, name: 'Tadas' }
+  let(:player1) { double :player, name: 'Antony', dead?: false }
+  let(:player2) { double :player, name: 'Tadas', dead?: false }
   subject { described_class.new(player1,player2) }
 
   describe 'initialize' do
@@ -39,6 +39,11 @@ describe Game do
       it 'returns a confirmation message' do
         allow(player2).to receive(:damage).with(10)
         expect(subject.attack_current_target).to eq "#{player1.name} attacked #{player2.name}!"
+      end
+      it 'returns a message with the losing players name' do
+        allow(player2).to receive(:dead?).and_return(true)
+        allow(player2).to receive(:damage).with(10)
+        expect(subject.attack_current_target).to eq "#{player2.name} is dead"
       end
     end
   end

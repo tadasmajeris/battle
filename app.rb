@@ -18,8 +18,12 @@ class Battle < Sinatra::Base
 
   post '/attack' do
   	session[:last_move] = $game.attack_current_target
+  	redirect '/switch_turns'
+  end
+
+  get '/switch_turns' do
     $game.switch
-  	redirect '/play'
+    redirect '/play'
   end
 
   get '/play' do

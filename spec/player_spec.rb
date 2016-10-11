@@ -21,4 +21,11 @@ describe Player do
   		expect(subject.hp).to eq 50
   	end
   end
+
+  describe '#dead?' do
+  	it 'returns true if a players health is <= 0' do
+  		subject.damage(60)
+  		expect(subject).to be_dead 
+  	end
+  end
 end
