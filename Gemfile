@@ -5,4 +5,5 @@ group :development, :test do
   gem "sinatra"
   gem "rspec-sinatra"
   gem "capybara"
+  gem "shotgun"
 end
