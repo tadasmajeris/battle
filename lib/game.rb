@@ -16,9 +16,13 @@ class Game
 	end
 
   def attack_current_target
-    target_player.damage(10)
+    target_player.damage(random_damage)
     @target_player.dead? ? "#{@target_player.name} is dead" :
     "#{current_player.name} attacked #{target_player.name}!"
+  end
+
+  def random_damage
+  	rand(5..20)
   end
 
   def player1
