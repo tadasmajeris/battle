@@ -1,4 +1,4 @@
-<%= @game.current_turn.name %> attacked <%= @game.opponent_of(@game.current_turn).name %>
+<%= @game.current_turn.name %> attacked <%= @game.current_opponent.name %>
 
 <%= @game.player_1.name %>: <%= @game.player_1.hit_points %>hp
 <%= @game.player_2.name %>: <%= @game.player_2.hit_points %>hp

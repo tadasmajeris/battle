@@ -7,8 +7,7 @@ describe 'switch turns' do
 
     scenario 'after Dave attacks' do
       sign_in_and_play
-      click_link 'Attack'
-      click_link 'OK'
+      attack_and_confirm
       expect(page).not_to have_content "It's Dave's turn!"
       expect(page).to have_content "It's Mittens's turn!"
     end
