@@ -10,7 +10,7 @@ feature 'Attack' do
   scenario 'reduce player 2 hit points by 10' do
     sign_in_and_play
     click_link 'Attack'
-    click_link 'OK'
+    #click_link 'OK'
     expect(page).not_to have_content 'Mittens: 60hp'
     expect(page).to have_content 'Mittens: 50hp'
   end
