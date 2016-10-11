@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require "player"
+require './lib/player.rb'
 
 class Battle < Sinatra::Base
 	enable :sessions
@@ -16,12 +16,13 @@ class Battle < Sinatra::Base
 
   post '/attack_player_2' do
   	session[:last_move] = "#{$player1.name} attacked #{$player2.name}!"
+  	$player2.damage(10)
   	redirect '/play'
   end
 
   get '/play' do
-  	@name1 = $player1.name
-  	@name2 = $player2.name
+  	@player1 = $player1
+  	@player2 = $player2
   	@last_move = session[:last_move]
   	erb :play
   end
