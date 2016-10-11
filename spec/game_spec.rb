@@ -21,4 +21,17 @@ let (:mittens) {double(:player)}
     end
   end
 
+  describe '#current_turn' do
+    it 'starts as player_1' do
+      expect(subject.current_turn).to eq dave
+    end
+  end
+
+  describe '#switch_turns' do
+    it 'switches the turn' do
+      subject.switch_turns
+      expect(subject.current_turn).to eq mittens
+    end
+  end
+
 end
