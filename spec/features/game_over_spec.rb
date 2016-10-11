@@ -8,8 +8,9 @@ feature 'Game over' do
     end
 
     scenario 'Player 1 loses' do
-      click_link 'Attack'
-      expect(page).to have_content 'Dave loses!'
+      9.times { attack_and_confirm }
+      click_button 'Attack'
+      expect(page).to have_content 'Mittens loses!'
     end
   end
 end
