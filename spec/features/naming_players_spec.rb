@@ -4,10 +4,10 @@ RSpec.feature "naming Players", :type => :feature do
   scenario "Expects players to fill in their names" do
     visit "/"
 
-    fill_in "Player 1", :with => "Dave"
-    fill_in "Player 2", :with => "Timmy"
+    fill_in "player1_name", :with => "Dave"
+    fill_in "player2_name", :with => "Timmy"
     click_button "Submit Players"
 
-    expect(page).to have_text("Players have been successfully created")
+    expect(page).to have_content("Dave vs. Timmy")
   end
 end
