@@ -1,10 +1,13 @@
-<h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<body style="font-family: 'Josefin Sans', sans-serif; text-align: center;">
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
 
-<%=@game.player1.name%>: <%=@game.player1.hp%>HP<br />
-<%=@game.player2.name%>: <%=@game.player2.hp%>HP
-<% if !@game.current_player.dead? %>
-<form action="/attack" method="post">
-	<input type="submit" value="attack <%="#{@game.target_player.name}"%>">
-</form>
-<% end %>
-<p><%= @last_move %></p>
+  <%=@game.player1.name%>: <%=@game.player1.hp%>HP<br />
+  <%=@game.player2.name%>: <%=@game.player2.hp%>HP
+  <% if !@game.current_player.dead? %>
+  <form action="/attack" method="post">
+  	<input type="submit" value="attack <%="#{@game.target_player.name}"%>">
+  </form>
+  <% end %>
+  <p><%= @last_move %></p>
+</body>
