@@ -1,2 +1,6 @@
 <h1><%=@name1%> vs. <%=@name2%></h1>
 <%=@name2%>: 60HP
+<form action="/attack_player_2" method="post">
+	<input type="submit" value="attack_player_2">
+</form>
+<p><%= @last_move %></p>

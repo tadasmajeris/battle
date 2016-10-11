@@ -13,9 +13,15 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
+  post '/attack_player_2' do
+  	session[:last_move] = "#{session[:name1]} attacked #{session[:name2]}!"
+  	redirect '/play'
+  end
+
   get '/play' do
   	@name1 = session[:name1]
   	@name2 = session[:name2]
+  	@last_move = session[:last_move]
   	erb :play
   end
 
