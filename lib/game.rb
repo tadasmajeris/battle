@@ -6,6 +6,11 @@ class Game
     @target_player = player2
     @current_player = player1
     @over = false
+    @auto = player2.name == :computer
+  end
+
+  def auto?
+    @auto
   end
 
   def self.instance
@@ -24,9 +29,14 @@ class Game
     @players.last
   end
 
-  def attack(player)
-    player.receive_damage
-    @over = player.dead?
+  def attack_current_target
+    target_player.receive_damage
+    @over = target_player.dead?
+    "#{current_player.name} attacked #{target_player.name}"
+  end
+
+  def target_hp
+    "#{target_player.name} HP: #{target_player.hit_points}"
   end
 
   def over?

@@ -5,6 +5,7 @@ describe Game do
 
   let(:player1) { Player.new('Dave') }
   let(:player2) { Player.new('Timmy') }
+  let(:computer) { Player.new(:computer) }
 
   describe '#player1' do
     it 'retrieves the first player' do
@@ -18,14 +19,24 @@ describe Game do
     end
   end
 
-  describe '#attack' do
+  describe '#auto?' do
+    it 'should return a string "auto" if playing computer' do
+      auto_game = described_class.new( player1, computer )
+      expect(auto_game).to be_auto
+    end
+    it 'should return an empty string if not playing computer' do
+      expect(game).not_to be_auto
+    end
+  end
+
+  describe '#attack_current_target' do
     it "damages the player" do
       expect(player2).to receive(:receive_damage)
-      game.attack(player2)
+      game.attack_current_target
     end
 
     it "should set the game to GAME OVER if the target player dies" do
-      10.times { game.attack(player2) }
+      10.times { game.attack_current_target }
       expect(game).to be_over
     end
   end

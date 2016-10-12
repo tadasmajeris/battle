@@ -12,8 +12,9 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
+    player2_name = params[:player2_name].empty? ? :computer : params[:player2_name]
     player1 = Player.new(params[:player1_name])
-    player2 = Player.new(params[:player2_name])
+    player2 = Player.new(player2_name)
     Game.create(player1, player2)
     redirect '/play'
   end
@@ -23,7 +24,16 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    @game.attack(@game.target_player)
+    @last_move = @game.attack_current_target
+    @target_hp = @game.target_hp
+    redirect('/game_over') if @game.over?
+
+    if @game.auto?
+      @game.switch
+      @next_move = @game.attack_current_target
+      @next_hp = @game.target_hp
+    end
+
     @game.over? ? redirect('/game_over') : erb(:attack)
   end
 
