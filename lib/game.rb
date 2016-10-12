@@ -5,6 +5,7 @@ class Game
     @players = [player1, player2]
     @target_player = player2
     @current_player = player1
+    @over = false
   end
 
   def player1
@@ -17,6 +18,11 @@ class Game
 
   def attack(player)
     player.receive_damage
+    @over = player.dead? 
+  end
+
+  def over?
+    @over
   end
 
   def switch

@@ -23,6 +23,17 @@ describe Game do
       expect(player2).to receive(:receive_damage)
       game.attack(player2)
     end
+
+    it "should set the game to GAME OVER if the target player dies" do
+      10.times { game.attack(player2) }
+      expect(game).to be_over
+    end
+  end
+
+  describe '#over?' do
+    it "should be false by default" do
+      expect(game).not_to be_over
+    end
   end
 
   describe '#target_player' do

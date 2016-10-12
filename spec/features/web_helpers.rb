@@ -15,3 +15,12 @@ def sign_in_and_attack_both
   click_button 'OK'
   click_button 'Attack Dave'
 end
+
+def attack_9_times
+  9.times do
+    click_button 'Attack Timmy'
+    click_button 'OK'
+    click_button 'Attack Dave'
+    click_button 'OK'
+  end
+end

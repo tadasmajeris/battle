@@ -1,0 +1,6 @@
+<body style='text-align: center;'>
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
+  <h3><%=@game.target_player.name%> HP: <%=@game.target_player.hit_points%></h3>
+  <p><%=@game.current_player.name%> attacked <%=@game.target_player.name%></p>
+  <h1>GAME OVER - <%=@game.target_player.name%> has died!<h1>
+</body>

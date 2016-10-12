@@ -21,4 +21,11 @@ describe Player do
       expect { player1.receive_damage }.to change {player1.hit_points}.by(-10)
     end
   end
+
+  describe '#dead?' do
+    it "should return true if the player HP drops below 0" do
+      10.times { subject.receive_damage }
+      expect(subject).to be_dead
+    end
+  end
 end
