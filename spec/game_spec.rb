@@ -24,4 +24,28 @@ describe Game do
       game.attack(player2)
     end
   end
+
+  describe '#target_player' do
+    it 'has player 2 as target player by default' do
+      expect(subject.target_player).to eq player2
+    end
+  end
+
+  describe '#current_player' do
+    it 'has player 1 as target player by default' do
+      expect(subject.current_player).to eq player1
+    end
+  end
+
+  describe '#switch' do
+    it 'switches the target player' do
+      subject.switch
+      expect(subject.target_player).to eq player1
+    end
+    it 'should switch target back to player2 when using twice' do
+      subject.switch
+      subject.switch
+      expect(subject.target_player).to eq player2
+    end
+  end
 end

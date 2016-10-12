@@ -3,7 +3,9 @@ require './lib/player'
 
 class Battle < Sinatra::Base
 
-enable :sessions
+  enable :sessions
+
+  before { @game = $game }
 
   get '/' do
     erb(:index)
@@ -17,14 +19,17 @@ enable :sessions
   end
 
   get '/play' do
-    @game = $game
     erb(:play)
   end
 
   get '/attack' do
-    @game = $game
-    @game.attack(@game.player2)
+    @game.attack(@game.target_player)
     erb(:attack)
+  end
+
+  post '/attack' do
+    @game.switch
+    redirect '/play'
   end
 
   run! if app_file == $0

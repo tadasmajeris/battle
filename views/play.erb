@@ -1,8 +1,10 @@
-<div style='text-align: center;'>
-  <div style='font-size: 30px;'><p><%=@game.player1.name%> vs. <%=@game.player2.name%></p></div>
-  <div style='font-size: 20px;'><p><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></p></div>
+<body style='text-align: center;'>
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%><h1>
+  <h3><%=@game.player1.name%> HP: <%=@game.player1.hit_points%></h3>
+  <h3><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></h3>
   <form action="/attack">
-    <p><label for="Attack">
-      <input type="submit" value="Attack"></p></label>
+    <label for="Attack">
+      <input type="submit" value="Attack <%=@game.target_player.name%>">
+    </label>
   </form>
-</div>
+</body>

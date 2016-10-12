@@ -7,5 +7,11 @@ end
 
 def sign_in_and_attack
   sign_in_and_play
-  click_button "Attack"
+  click_button "Attack Timmy"
+end
+
+def sign_in_and_attack_both
+  sign_in_and_attack
+  click_button 'OK'
+  click_button 'Attack Dave'
 end
