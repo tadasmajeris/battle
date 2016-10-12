@@ -26,14 +26,15 @@ describe Game do
   end
 
   describe '#track_turn' do
-    it "keeps track of default turn" do
-      expect(player1).to receive(:track_turn)
+    it "Player 1 turn by default" do
+      expect(game.track_turn).to eq player1
     end
   end
 
   describe '#switch_turn' do
     it "switches player turn" do
-      expect(player1).to receive(: )
+      game.switch_turn
+      expect(game.track_turn).to eq player2
     end
   end
 end
