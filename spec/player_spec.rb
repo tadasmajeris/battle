@@ -34,4 +34,17 @@ describe Player do
       expect(player).to be_dead
     end
   end
+
+  describe '#heal' do
+    it "should increase the player HP" do
+      allow(player).to receive(:random_heal).and_return(15)
+      expect { player.heal }.to change {player.hit_points}.by(15)
+    end
+  end
+
+  describe '#random_heal' do
+    it 'returns a random number between 5..20' do
+      expect(5..20).to include(player.random_heal)
+    end
+  end
 end

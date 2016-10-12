@@ -63,6 +63,12 @@ class Battle < Sinatra::Base
     erb(:attack)
   end
 
+  get '/heal' do
+    @last_move = @game.heal_current_player
+    @target_hp = @game.current_hp
+    erb(:attack)
+  end
+
   post '/attack' do
     @game.switch
     redirect '/play'

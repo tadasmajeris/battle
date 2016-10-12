@@ -45,6 +45,17 @@ describe Game do
     end
   end
 
+  describe '#heal_current_player' do
+    it "heals the current player" do
+      expect(player1).to receive(:heal)
+      game.heal_current_player
+    end
+
+    it "should return the heal confirmation" do
+      expect(game.heal_current_player).to eq "#{player1.name} healed himself"
+    end
+  end
+
   describe '#paralyse_current_target' do
     it "damages and tries to paralyse the player" do
       expect(player2).to receive(:paralyse)

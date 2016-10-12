@@ -55,8 +55,17 @@ class Game
     end
   end
 
+  def heal_current_player
+    current_player.heal
+    "#{current_player.name} healed himself"
+  end
+
   def target_hp
     "#{target_player.name} HP: #{target_player.hit_points}"
+  end
+
+  def current_hp
+    "#{current_player.name} HP: #{current_player.hit_points}"
   end
 
   def over?

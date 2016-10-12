@@ -29,6 +29,14 @@ class Player
     @missing_turn = (1..6).include?(random_chance)
   end
 
+  def heal
+    @hit_points += random_heal
+  end
+
+  def random_heal
+    rand(5..20)
+  end
+
   def random_chance
     rand(1..10)
   end
