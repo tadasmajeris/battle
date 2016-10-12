@@ -18,12 +18,13 @@ enable :sessions
 
   get '/play' do
     @game = $game
+    @game.switch_turn if params[:switch] == "true"
     erb(:play)
   end
 
   get '/attack' do
     @game = $game
-    @game.attack(@game.player2)
+    @game.attack(@game.defender)
     erb(:attack)
   end
 
