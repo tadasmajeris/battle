@@ -35,6 +35,16 @@ class Game
     "#{current_player.name} attacked #{target_player.name}"
   end
 
+  def paralyse_current_target
+    target_player.paralyse
+    @over = target_player.dead?
+    if target_player.missing_turn
+      "#{current_player.name} paralysed #{target_player.name}"
+    else
+      "#{current_player.name} tried to paralyse #{target_player.name} but failed"
+    end
+  end
+
   def target_hp
     "#{target_player.name} HP: #{target_player.hit_points}"
   end

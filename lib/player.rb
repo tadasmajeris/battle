@@ -1,13 +1,14 @@
 require_relative 'game'
 
 class Player
-  attr_reader :name, :hit_points
+  attr_reader :name, :hit_points, :missing_turn
 
   DEFAULT_HP = 100
 
   def initialize(name, hit_points = DEFAULT_HP)
     @name = name
     @hit_points = hit_points
+    @missing_turn = false
   end
 
   def dead?
@@ -16,6 +17,15 @@ class Player
 
   def receive_damage
     @hit_points -= random_damage
+  end
+
+  def paralyse
+    @hit_points -= (random_damage/2)
+    @missing_turn = random_chance == 1
+  end
+
+  def random_chance
+    rand(1..3)
   end
 
   def random_damage

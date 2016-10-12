@@ -37,6 +37,19 @@ class Battle < Sinatra::Base
     @game.over? ? redirect('/game_over') : erb(:attack)
   end
 
+  get '/paralyse' do
+    @last_move = @game.paralyse_current_target
+    @target_hp = @game.target_hp
+    redirect('/game_over') if @game.over?
+
+    if @game.target_player.missing_turn
+      @next_move = "#{@game.target_player.name} is paralysed."
+      @game.switch
+    end
+
+    @game.over? ? redirect('/game_over') : erb(:attack)
+  end
+
   post '/attack' do
     @game.switch
     redirect '/play'

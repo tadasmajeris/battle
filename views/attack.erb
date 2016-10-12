@@ -8,6 +8,10 @@
     <p><%=@next_move%></p>
   <% end %>
 
+  <% if @game.target_player.missing_turn %>
+    <p><%=@next_move%></p>
+  <% end %>
+
   <form action="/attack" method="post">
     <input type="submit" value="OK">
   </form>
