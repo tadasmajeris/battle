@@ -15,10 +15,6 @@ class Game
     @players.last
   end
 
-  def attack(player)
-    player.receive_damage
-  end
-
   def switch_turn
     @attacker = opponent_of(attacker)
     @defender = opponent_of(defender)

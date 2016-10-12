@@ -18,13 +18,6 @@ describe Game do
     end
   end
 
-  describe '#attack' do
-    it "damages the player" do
-      expect(player2).to receive(:receive_damage)
-      game.attack(player2)
-    end
-  end
-
   describe '#attacker' do
     it "Player 1 turn by default" do
       expect(game.attacker).to eq player1
@@ -44,5 +37,4 @@ describe Game do
       expect(game.opponent_of(player2)).to eq player1
     end
   end
-
 end
