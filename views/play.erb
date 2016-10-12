@@ -7,4 +7,24 @@
       <input type="submit" value="Attack <%=@game.target_player.name%>">
     </label>
   </form>
+  <form action="/paralyse">
+    <label for="Paralyse">
+      <input type="submit" value="Paralyse <%=@game.target_player.name%>">
+    </label>
+  </form>
+  <form action="/poison">
+    <label for="Poison">
+      <input type="submit" value="Poison <%=@game.target_player.name%>">
+    </label>
+  </form>
+  <form action="/sleep">
+    <label for="Sleep">
+      <input type="submit" value="Sleep <%=@game.target_player.name%>">
+    </label>
+  </form>
+  <form action="/heal">
+    <label for="Heal">
+      <input type="submit" value="Heal <%=@game.current_player.name%>">
+    </label>
+  </form>
 </body>
