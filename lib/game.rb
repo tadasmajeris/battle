@@ -30,4 +30,7 @@ class Game
     @players.first.hit_points <= 0 || @players.last.hit_points <= 0
   end
 
+  def loser
+    @players.select { |player| player.hit_points <= 0 }.first
+  end
 end

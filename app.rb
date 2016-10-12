@@ -26,7 +26,15 @@ enable :sessions
   get '/attack' do
     @game = $game
     Attack.run(@game.defender)
+    if @game.end_game?
+      redirect '/end_game'
+    end
     erb(:attack)
+  end
+
+  get '/end_game' do
+    @game = $game
+    erb(:end_game)
   end
 
   run! if app_file == $0

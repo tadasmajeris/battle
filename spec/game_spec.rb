@@ -46,4 +46,9 @@ describe Game do
     end
   end
 
+  describe '#loser' do
+    it 'so a player can loose a game of battle' do
+      expect(short_game.loser).to eq player3
+    end
+  end
 end
