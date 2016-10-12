@@ -39,6 +39,32 @@ describe Game do
       10.times { game.attack_current_target }
       expect(game).to be_over
     end
+
+    it "should return the attack confirmation" do
+      expect(game.attack_current_target).to eq "#{player1.name} attacked #{player2.name}"
+    end
+  end
+
+  describe '#paralyse_current_target' do
+    it "damages and tries to paralyse the player" do
+      expect(player2).to receive(:paralyse)
+      game.paralyse_current_target
+    end
+
+    it "should set the game to GAME OVER if the target player dies" do
+      20.times { game.paralyse_current_target }
+      expect(game).to be_over
+    end
+
+    it "should return the paralysing confirmation" do
+      allow(game.target_player).to receive(:missing_turn).and_return(true)
+      expect(game.paralyse_current_target).to eq "#{player1.name} paralysed #{player2.name}"
+    end
+
+    it "should return the missed paralyse confirmation" do
+      allow(game.target_player).to receive(:missing_turn).and_return(false)
+      expect(game.paralyse_current_target).to eq "#{player1.name} tried to paralyse #{player2.name} but failed"
+    end
   end
 
   describe '#over?' do
