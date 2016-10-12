@@ -8,6 +8,14 @@ class Game
     @over = false
   end
 
+  def self.instance
+    @game
+  end
+
+  def self.create(player1, player2)
+    @game = Game.new(player1, player2)
+  end
+
   def player1
     @players.first
   end
@@ -18,7 +26,7 @@ class Game
 
   def attack(player)
     player.receive_damage
-    @over = player.dead? 
+    @over = player.dead?
   end
 
   def over?

@@ -5,7 +5,7 @@ class Battle < Sinatra::Base
 
   enable :sessions
 
-  before { @game = $game }
+  before { @game = Game.instance }
 
   get '/' do
     erb(:index)
@@ -14,7 +14,7 @@ class Battle < Sinatra::Base
   post '/names' do
     player1 = Player.new(params[:player1_name])
     player2 = Player.new(params[:player2_name])
-    $game = Game.new(player1, player2)
+    Game.create(player1, player2)
     redirect '/play'
   end
 
