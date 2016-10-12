@@ -20,12 +20,17 @@ class Player
   end
 
   def paralyse
-    @hit_points -= (random_damage/2)
-    @missing_turn = random_chance == 1
+    @hit_points -= (random_damage/2)+5
+    @missing_turn = (1..3).include?(random_chance)
+  end
+
+  def sleep
+    @hit_points -= (random_damage/4)+5
+    @missing_turn = (1..6).include?(random_chance)
   end
 
   def random_chance
-    rand(1..3)
+    rand(1..10)
   end
 
   def random_damage

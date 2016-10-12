@@ -45,6 +45,16 @@ class Game
     end
   end
 
+  def sleep_current_target
+    target_player.sleep
+    @over = target_player.dead?
+    if target_player.missing_turn
+      "#{current_player.name} put #{target_player.name} to sleep"
+    else
+      "#{current_player.name} tried to put #{target_player.name} to sleep but failed"
+    end
+  end
+
   def target_hp
     "#{target_player.name} HP: #{target_player.hit_points}"
   end

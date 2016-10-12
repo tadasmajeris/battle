@@ -47,7 +47,20 @@ class Battle < Sinatra::Base
       @game.switch
     end
 
-    @game.over? ? redirect('/game_over') : erb(:attack)
+    erb(:attack)
+  end
+
+  get '/sleep' do
+    @last_move = @game.sleep_current_target
+    @target_hp = @game.target_hp
+    redirect('/game_over') if @game.over?
+
+    if @game.target_player.missing_turn
+      @next_move = "#{@game.target_player.name} is sleeping."
+      @game.switch
+    end
+
+    erb(:attack)
   end
 
   post '/attack' do
