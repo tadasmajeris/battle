@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe Game do
   subject(:game) { Game.new(player1, player2) }
+  subject(:short_game) { Game.new(player1, player3) }
 
   let(:player1) { Player.new('Dave') }
   let(:player2) { Player.new('Timmy') }
+  let(:player3) { Player.new('Fred', 0) }
 
   describe '#player1' do
     it 'retrieves the first player' do
@@ -37,4 +39,11 @@ describe Game do
       expect(game.opponent_of(player2)).to eq player1
     end
   end
+
+  describe '#end_game' do
+    it 'ends game when either player has 0 HP' do
+      expect(short_game.end_game?).to be_truthy
+    end
+  end
+
 end

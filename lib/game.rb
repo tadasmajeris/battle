@@ -1,3 +1,5 @@
+require_relative 'player'
+
 class Game
   attr_reader :attacker, :defender
 
@@ -22,6 +24,10 @@ class Game
 
   def opponent_of(the_player)
     @players.select { |player| player != the_player }.first
+  end
+
+  def end_game?
+    @players.first.hit_points <= 0 || @players.last.hit_points <= 0
   end
 
 end
