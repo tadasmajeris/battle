@@ -31,11 +31,8 @@ enable :sessions
   end
 
   get '/attack' do
-    Attack.run(@game.defender)
-    if @game.end_game?
-      redirect '/end_game'
-    end
-    erb(:attack)
+    Attack.use(@game.defender)
+    @game.end_game? ? redirect('/end_game') : erb(:attack)
   end
 
   get '/end_game' do

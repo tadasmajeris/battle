@@ -9,3 +9,8 @@ def sign_in_and_attack
   sign_in_and_play
   click_button "Attack"
 end
+
+def attack_and_confirm
+  click_button "Attack"
+  click_button "OK"
+end

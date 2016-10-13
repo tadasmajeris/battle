@@ -1,7 +1,7 @@
 require_relative 'player'
 
 class Game
-  attr_reader :attacker, :defender
+  attr_reader :attacker, :defender, :current_attack
 
   def initialize(player1, player2)
     @players = [player1, player2]
@@ -15,6 +15,10 @@ class Game
 
   def self.instance
     @game
+  end
+
+  def save_current_attack(attack)
+    @current_attack = attack
   end
 
   def player1

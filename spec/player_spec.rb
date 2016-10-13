@@ -17,8 +17,15 @@ describe Player do
   end
 
   describe '#receive damage' do
-    it "reduces the player HP" do
-      expect { player1.receive_damage }.to change {player1.hit_points}.by(-10)
+    it "reduces the player HP by a given damage" do
+      allow(player1).to receive(:random_damage).and_return(15)
+      expect { player1.receive_damage }.to change {player1.hit_points}.by(-15)
+    end
+  end
+
+  describe '#random_damage' do
+    it 'should return a random number from 10..30' do
+      expect(10..30).to include(subject.random_damage)
     end
   end
 end
