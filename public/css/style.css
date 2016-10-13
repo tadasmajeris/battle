@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Londrina+Outline');
+
+body {
+  text-align: center;
+  font-family: 'Raleway', cursive;
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/brickwall.png);
+}
+
+
+h1 {
+  font-family: 'Londrina Outline', cursive;
+  font-size: 300%;
+}
+
+input {
+  padding: 10px;
+}
