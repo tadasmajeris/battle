@@ -20,6 +20,19 @@ describe Game do
     end
   end
 
+  describe '#set_automation' do
+    it 'should let set automation to true' do
+      subject.set_automation(true)
+      expect(subject).to be_automated
+    end
+  end
+
+  describe '#automated?' do
+    it 'should be false by default' do
+      expect(subject).not_to be_automated
+    end
+  end
+
   describe '#attacker' do
     it "Player 1 turn by default" do
       expect(game.attacker).to eq player1

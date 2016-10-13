@@ -13,7 +13,8 @@ enable :sessions
   post '/names' do
     player1 = Player.new(params[:player1_name])
     player2 = Player.new(params[:player2_name])
-    @game = Game.create(player1, player2)
+    automate = params[:player2_name].empty?
+    @game = Game.create(player1, player2, automate)
     redirect '/play'
   end
 
@@ -33,6 +34,14 @@ enable :sessions
   get '/attack' do
     Attack.use(@game.defender)
     @game.end_game? ? redirect('/end_game') : erb(:attack)
+  end
+
+  get '/auto_attack' do
+    Attack.use(@game.defender)
+    redirect('/end_game') if @game.end_game?
+    @game.switch_turn
+    Attack.use(@game.defender)
+    @game.end_game? ? redirect('/end_game') : erb(:auto_attack)
   end
 
   get '/end_game' do

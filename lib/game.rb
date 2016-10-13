@@ -9,8 +9,9 @@ class Game
     @defender = player2
   end
 
-  def self.create(player1, player2)
+  def self.create(player1, player2, automate)
     @game = Game.new(player1, player2)
+    @game.set_automation(automate)
   end
 
   def self.instance
@@ -27,6 +28,14 @@ class Game
 
   def player2
     @players.last
+  end
+
+  def set_automation(boolean)
+    @automated = boolean
+  end
+
+  def automated?
+    @automated
   end
 
   def switch_turn

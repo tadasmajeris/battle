@@ -3,7 +3,7 @@
   <h2><%=@game.player1.name%> HP: <%=@game.player1.hit_points%></h2>
   <h2><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></h2>
   <h3><%=@game.attacker.name%>'s Turn to Attack</h3>
-  <form action="/attack">
+  <form action="/<%= @game.automated? ? "auto_" : ""%>attack">
       <label for="Attack">
       <input type="submit" value="Attack">
       </label>

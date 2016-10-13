@@ -8,6 +8,10 @@ describe Player do
     it 'returns its name' do
       expect(player1.name).to eq('Dave')
     end
+
+    it 'should return Godzilla if name is empty' do
+      expect(Player.new('').name).to eq 'Godzilla'
+    end
   end
 
   describe '#hit points' do

@@ -6,7 +6,7 @@ class Player
   DEFAULT_HP = 100
 
   def initialize(name, hit_points = DEFAULT_HP)
-    @name = name
+    @name = name.empty? ? 'Godzilla' : name
     @hit_points = hit_points
   end
 
