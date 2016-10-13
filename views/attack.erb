@@ -1,7 +1,7 @@
 <body style= 'text-align: center;'>
   <h1><%=@game.attacker.name%> attacked <%=@game.defender.name%></h1>
   <h2><%=@game.defender.name%> HP: <%=@game.defender.hit_points%></h2>
-  <form action="/play">
+  <form action="/switch" method="post">
       <label for="OK">
         <input type="submit" value="OK">
       </label>
