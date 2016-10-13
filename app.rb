@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './lib/player'
 require './lib/attack'
+require './lib/heal'
 
 class Battle < Sinatra::Base
 
@@ -32,8 +33,9 @@ enable :sessions
   end
 
   get '/attack' do
-    Attack.use(@game.defender)
-    @game.end_game? ? redirect('/end_game') : erb(:attack)
+    @action_message = Attack.use(@game.defender)
+    @player = @game.defender
+    @game.end_game? ? redirect('/end_game') : erb(:action)
   end
 
   get '/auto_attack' do
@@ -42,6 +44,12 @@ enable :sessions
     @game.switch_turn
     Attack.use(@game.defender)
     @game.end_game? ? redirect('/end_game') : erb(:auto_attack)
+  end
+
+  get '/heal' do
+    @action_message = Heal.use(@game.attacker)
+    @player = @game.attacker
+    erb(:action)
   end
 
   get '/end_game' do

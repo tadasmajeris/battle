@@ -3,14 +3,14 @@ require 'spec_helper'
 feature "Attacking" do
   scenario "Attack Player 2 and get a confirmation" do
     sign_in_and_attack
-    expect(page).to have_content("Dave attacked Timmy")
+    expect(page).to have_content("Timmy was attacked")
   end
 
   scenario "Player 2 switch turns and attacks Player 1" do
     sign_in_and_play
     attack_and_confirm
     click_button "Attack"
-    expect(page).to have_content("Timmy attacked Dave")
+    expect(page).to have_content("Dave was attacked")
   end
 
   scenario "Player 2 loses HP when attacked" do

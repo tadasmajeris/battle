@@ -1,15 +1,10 @@
-class Attack
+require_relative 'action'
 
-  def initialize(defender)
-    @defender = defender
-  end
-
-  def self.use(defender)
-    new(defender).run
-  end
+class Attack < Action
 
   def run
-    @defender.receive_damage
+    @player.receive_damage
+    "#{@player.name} was attacked"
   end
 
 end

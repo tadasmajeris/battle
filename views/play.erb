@@ -5,19 +5,19 @@
   <h3><%=@game.attacker.name%>'s Turn to Attack</h3>
 
   <form action="/<%=@game.automated? ? "auto_" : ""%>attack">
-    <input type="submit" value="Attack" />
+    <input type="submit" value="Attack <%=@game.defender.name%>" />
   </form>
 
   <form action="/paralyse">
-    <input type="submit" value="Paralyse" />
+    <input type="submit" value="Paralyse <%=@game.defender.name%>" />
   </form>
 
   <form action="/poison">
-    <input type="submit" value="Poison" />
+    <input type="submit" value="Poison <%=@game.defender.name%>" />
   </form>
 
   <form action="/heal">
-    <input type="submit" value="Heal" />
+    <input type="submit" value="Heal <%=@game.attacker.name%>" />
   </form>
 
 </body>

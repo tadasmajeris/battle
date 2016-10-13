@@ -1,13 +1,18 @@
 require 'spec_helper'
 
 describe Attack do
-  let(:defender) { double :defender }
-  subject { Attack.new(defender) }
+  let(:player) { double :player, name: 'Dave' }
+  subject { Attack.new(player) }
 
-  describe '.use' do
-    it "damages the player" do
-      expect(defender).to receive(:receive_damage)
-      Attack.use(defender)
+  describe '#run' do
+    it 'damages the player' do
+      expect(player).to receive(:receive_damage)
+      subject.run
+    end
+
+    it 'should return a confirmation' do
+      allow(player).to receive(:receive_damage)
+      expect(subject.run).to eq "#{player.name} was attacked"
     end
   end
 end

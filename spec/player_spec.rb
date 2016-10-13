@@ -32,4 +32,17 @@ describe Player do
       expect(10..30).to include(subject.random_damage)
     end
   end
+
+  describe '#random_heal' do
+    it 'should return a random number from 5..25' do
+      expect(5..25).to include(subject.random_heal)
+    end
+  end
+
+  describe '#heal' do
+    it 'should increase players HP' do
+      allow(player1).to receive(:random_heal).and_return(5)
+      expect { player1.heal }.to change {player1.hit_points}.by(+5)
+    end
+  end
 end

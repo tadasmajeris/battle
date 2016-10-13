@@ -17,4 +17,12 @@ class Player
   def random_damage
     rand(10..30)
   end
+
+  def random_heal
+    rand(5..25)
+  end
+
+  def heal
+    @hit_points += random_heal
+  end
 end
