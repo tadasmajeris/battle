@@ -1,11 +1,23 @@
 <body style='text-align: center;'>
-  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></p></h1>
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></h1>
   <h2><%=@game.player1.name%> HP: <%=@game.player1.hit_points%></h2>
   <h2><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></h2>
   <h3><%=@game.attacker.name%>'s Turn to Attack</h3>
-  <form action="/<%= @game.automated? ? "auto_" : ""%>attack">
-      <label for="Attack">
-      <input type="submit" value="Attack">
-      </label>
+
+  <form action="/<%=@game.automated? ? "auto_" : ""%>attack">
+    <input type="submit" value="Attack" />
   </form>
+
+  <form action="/paralyse">
+    <input type="submit" value="Paralyse" />
+  </form>
+
+  <form action="/poison">
+    <input type="submit" value="Poison" />
+  </form>
+
+  <form action="/heal">
+    <input type="submit" value="Heal" />
+  </form>
+
 </body>
