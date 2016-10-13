@@ -1,17 +1,15 @@
-<div style='text-align: center;'>
-  <div style='font-size: 30px;'><p><%=@game.player1.name%> vs. <%=@game.player2.name%></p></div>
-  <div style='font-size: 20px;'><p><%=@game.player1.name%> HP: <%=@game.player1.hit_points%></p></div>
-  <div style='font-size: 20px;'><p><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></p></div>
-  <div style='font-size: 20px;'><p><%=@game.attacker.name%>'s Turn to Attack</p></div>
+<body style='text-align: center;'>
+  <h1><%=@game.player1.name%> vs. <%=@game.player2.name%></p></h1>
+  <h2><%=@game.player1.name%> HP: <%=@game.player1.hit_points%></h2>
+  <h2><%=@game.player2.name%> HP: <%=@game.player2.hit_points%></h2>
+  <h3><%=@game.attacker.name%>'s Turn to Attack</h3>
   <form action="/attack">
-    <p>
       <label for="Attack">
       <input type="submit" value="Attack">
       </label>
-    </p>
   </form>
   <form action="" method="GET">
     <input type="hidden" name="switch" value="true">
     <button value="Switch Turns" type="submit">Switch Turns</button>
   </form>
-</div>
+</body>
