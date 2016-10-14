@@ -1,7 +1,7 @@
 require 'sinatra/base'
-require './lib/player'
-require './lib/game'
-require './lib/player_attack'
+require 'player'
+require 'game'
+require 'attack'
 
 class Battle < Sinatra::Base
 
@@ -29,7 +29,8 @@ enable :sessions
   end
 
   post '/attack' do
-    Attack.run(@game.current_opponent)
+    Attack.use(@game.current_opponent)
+
     if @game.game_over?
       redirect '/game-over'
     else
