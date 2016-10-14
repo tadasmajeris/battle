@@ -13,7 +13,7 @@ attr_reader :current_turn
   end
 
   def initialize(player_1, player_2)
-   @players =[player_1, player_2]
+   @players = [player_1, player_2]
    @current_turn = player_1
   end
 
