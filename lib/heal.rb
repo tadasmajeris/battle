@@ -1,4 +1,4 @@
-require "action"
+require_relative "action"
 
 class Heal < Action
 

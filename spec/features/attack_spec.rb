@@ -9,6 +9,7 @@ feature 'Attack' do
 
   scenario 'reduce player 2 hit points by 10' do
     sign_in_and_play
+    allow(Game.instance.current_opponent).to receive(:random_damage).and_return(10)
     attack_and_confirm
     expect(page).not_to have_content 'Mittens: 60hp'
     expect(page).to have_content 'Mittens: 50hp'
