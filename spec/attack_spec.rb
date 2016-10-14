@@ -1,13 +1,14 @@
 require 'attack'
 
  describe Attack do
-   subject(:attack_class) { described_class }
+   subject {described_class.new(player)}
    let(:player) { double :player }
 
-   describe '.use' do
+
+   describe '#run' do
      it 'damages the player' do
        expect(player).to receive(:receive_damage)
-       attack_class.use(player)
+       subject.run
      end
    end
 end
