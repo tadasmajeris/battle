@@ -9,6 +9,6 @@ class Action
   end
 
   def run
-    # to be implemented
+    raise NotImplementedError, 'You must implement the run method'
   end
 end
